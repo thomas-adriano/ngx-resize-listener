@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+/projects/ngx-resize-listener/node_modules
 
 # IDEs and editors
 /.idea

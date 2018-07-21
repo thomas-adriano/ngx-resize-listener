@@ -1,5 +1,5 @@
 {
-  "name": "ngx-resize-listener",
+  "name": "@cod3/ngx-resize-listener-project",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,16 +10,18 @@
     "e2e": "ng e2e"
   },
   "private": false,
+  "homepage": "https://github.com/thomas-adriano/ngx-resize-listener",
   "dependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
     "@angular/animations": "^6.0.3",
+    "@angular/common": "^6.0.3",
+    "@angular/compiler": "^6.0.3",
+    "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@cod3/ngx-resize-listener": "^1.0.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

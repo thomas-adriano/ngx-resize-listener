@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ResizeListenerService } from 'projects/resize-listener/src/public_api';
+import { ResizeListenerService } from '@cod3/ngx-resize-listener';
 
 @Component({
   selector: 'app-cmp1',
