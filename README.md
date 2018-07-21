@@ -40,4 +40,4 @@ ResizeListenerService:
 
 ## License
 
-ngx-resize-listener is available under the MIT License.
+ngx-resize-listener is available under the [MIT](https://opensource.org/licenses/MIT) License.
