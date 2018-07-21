@@ -1,7 +1,7 @@
 # ngx-resize-listener
 
 Cpu conscious window resize events for Angular, using RxJs.
-It listens for native resize events but throttle it using requestAnimationFrame. Thus, instead of emitting a thousen resize events per second, it emits only 1 event per animation frame. In other words, the maximum events per second is equal to the current monitor refresh rate.
+It listens for native resize events but throttle it using [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame). Thus, instead of emitting a thousen resize events per second, it emits only 1 event per animation frame. In other words, the maximum events per second is equal to the current monitor refresh rate.
 The core implementation was based on [this](https://developer.mozilla.org/en-US/docs/Web/Events/resize#requestAnimationFrame_customEvent).
 
 ## Getting Started
