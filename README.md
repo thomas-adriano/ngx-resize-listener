@@ -1,27 +1,43 @@
-# NgxResizeListener
+# ngx-resize-listener
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+Cpu conscious window resize events for Angular, using RxJs.
+It listens for native resize events but throttle it using requestAnimationFrame. Thus, instead of emitting a thousen resize events per second, it emits only 1 event per animation frame. In other words, the maximum events per second is equal to the current monitor refresh rate.
+The core implementation was based on [this](https://developer.mozilla.org/en-US/docs/Web/Events/resize#requestAnimationFrame_customEvent).
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install it with NPM: `npm i @cod3/ngx-resize-listener`
 
-## Code scaffolding
+Use it in your code:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```javascript
+...
+import { ResizeListenerService } from '@cod3/ngx-resize-listener';
 
-## Build
+@Component({
+  selector: 'app-cmp1',
+  templateUrl: './cmp1.component.html',
+  styleUrls: ['./cmp1.component.css'],
+  providers: [ResizeListenerService] // <-- register it.
+})
+export class Cmp1Component implements OnInit {
+  constructor(private resizeListener: ResizeListenerService) {}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  ngOnInit() {
+    this.resizeListener.resized().subscribe(() => {
+      console.log('Cmp1Component resize');
+    });
+  }
+}
+```
 
-## Running unit tests
+## Public API
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ResizeListenerService:
 
-## Running end-to-end tests
+- `resized()`: Emits when a window resize event occurs;
+- `stopListening()`: Stops listening routines. Because this service correctly implements onDestroy method, it is not necessary to call this method in client components onDestroy method.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ngx-resize-listener is available under the MIT License.
