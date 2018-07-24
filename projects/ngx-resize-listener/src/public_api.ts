@@ -25,3 +25,4 @@
  */
 
 export * from './lib/resize-listener.service';
+export * from './lib/scroll-listener.service';
