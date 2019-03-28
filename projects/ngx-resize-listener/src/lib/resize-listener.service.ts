@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { Injectable, OnDestroy } from "@angular/core";
+import { Observable, Observer } from "rxjs";
+import { shareReplay } from "rxjs/operators";
 
 /**
  * Emits cpu conscious window resize events.
@@ -36,7 +36,7 @@ import { shareReplay } from 'rxjs/operators';
  */
 @Injectable()
 export class ResizeListenerService implements OnDestroy {
-  private static readonly OPTIMIZED_RESIZE_NAME = 'optimizedResize';
+  private static readonly OPTIMIZED_RESIZE_NAME = "optimizedResize";
   private resizeObservable: Observable<any>;
   private nativeResizeCallback;
   private optimizedResizeCallback;
@@ -49,7 +49,8 @@ export class ResizeListenerService implements OnDestroy {
       };
       window.addEventListener(
         ResizeListenerService.OPTIMIZED_RESIZE_NAME,
-        this.optimizedResizeCallback
+        this.optimizedResizeCallback,
+        true
       );
     });
 
@@ -75,13 +76,14 @@ export class ResizeListenerService implements OnDestroy {
    */
   public stopListening() {
     if (this.nativeResizeCallback) {
-      window.removeEventListener('resize', this.nativeResizeCallback);
+      window.removeEventListener("resize", this.nativeResizeCallback, true);
     }
 
     if (this.optimizedResizeCallback) {
       window.removeEventListener(
         ResizeListenerService.OPTIMIZED_RESIZE_NAME,
-        this.optimizedResizeCallback
+        this.optimizedResizeCallback,
+        true
       );
     }
   }
@@ -101,9 +103,9 @@ export class ResizeListenerService implements OnDestroy {
           running = false;
         });
       };
-      window.addEventListener(type, this.nativeResizeCallback);
+      window.addEventListener(type, this.nativeResizeCallback, true);
     };
 
-    throttle('resize');
+    throttle("resize");
   }
 }
