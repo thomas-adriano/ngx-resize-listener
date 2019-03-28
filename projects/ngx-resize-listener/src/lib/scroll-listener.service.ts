@@ -20,13 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { Injectable, OnDestroy } from "@angular/core";
+import { Observable, Observer } from "rxjs";
+import { shareReplay } from "rxjs/operators";
 
 @Injectable()
 export class ScrollListenerService implements OnDestroy {
-  private static readonly OPTIMIZED_SCROLL_NAME = 'optimizedScroll';
+  private static readonly OPTIMIZED_SCROLL_NAME = "optimizedScroll";
   private scrollObservable: Observable<any>;
   private nativeScrollCallback;
   private optimizedScrollCallback;
@@ -39,7 +39,8 @@ export class ScrollListenerService implements OnDestroy {
       };
       window.addEventListener(
         ScrollListenerService.OPTIMIZED_SCROLL_NAME,
-        this.optimizedScrollCallback
+        this.optimizedScrollCallback,
+        true
       );
     });
 
@@ -65,13 +66,14 @@ export class ScrollListenerService implements OnDestroy {
    */
   public stopListening() {
     if (this.nativeScrollCallback) {
-      window.removeEventListener('scroll', this.nativeScrollCallback);
+      window.removeEventListener("scroll", this.nativeScrollCallback, true);
     }
 
     if (this.optimizedScrollCallback) {
       window.removeEventListener(
         ScrollListenerService.OPTIMIZED_SCROLL_NAME,
-        this.optimizedScrollCallback
+        this.optimizedScrollCallback,
+        true
       );
     }
   }
@@ -91,9 +93,9 @@ export class ScrollListenerService implements OnDestroy {
           running = false;
         });
       };
-      window.addEventListener(type, this.nativeScrollCallback);
+      window.addEventListener(type, this.nativeScrollCallback, true);
     };
 
-    throttle('scroll');
+    throttle("scroll");
   }
 }
