@@ -1,6 +1,6 @@
 {
   "name": "@cod3/ngx-resize-listener",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/thomas-adriano/ngx-resize-listener",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
